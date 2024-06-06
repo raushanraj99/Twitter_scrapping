@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Trends</title>
+   
+</head>
+<body>
+    <div id="results"></div>
+    <button id="run-script">Click here to run the script</button>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#run-script").click(function() {
+                $.getJSON("/run_script", function(data) {
+                    $("#results").html(`
+                        <p>These are the most happening topics :</p>
+                    
+                        <p>Here's a JSON extract of this record from the MongoDB:</p>
+                        <pre>${JSON.stringify([data], null, 2)}</pre>
+                    `);
+                });
+            }); 
+        });
+    </script>
+</body>
+</html>
